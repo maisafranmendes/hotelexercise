@@ -1,0 +1,15 @@
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/obj/Debug/net6.0/hotelexercise.csproj.AssemblyReference.cache
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/obj/Debug/net6.0/hotelexercise.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/obj/Debug/net6.0/hotelexercise.AssemblyInfoInputs.cache
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/obj/Debug/net6.0/hotelexercise.AssemblyInfo.cs
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/obj/Debug/net6.0/hotelexercise.csproj.CoreCompileInputs.cache
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/obj/Debug/net6.0/hotelexercise.dll
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/obj/Debug/net6.0/ref/hotelexercise.dll
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/obj/Debug/net6.0/hotelexercise.pdb
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/bin/Debug/net6.0/hotelexercise
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/bin/Debug/net6.0/hotelexercise.deps.json
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/bin/Debug/net6.0/hotelexercise.runtimeconfig.json
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/bin/Debug/net6.0/hotelexercise.dll
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/bin/Debug/net6.0/ref/hotelexercise.dll
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/bin/Debug/net6.0/hotelexercise.pdb
+/Users/lamaisa.mendes/Documents/Estudo/hotelexercise/obj/Debug/net6.0/hotelexercise.genruntimeconfig.cache
