@@ -1,4 +1,0 @@
-enum Cliente{
-    Regular,
-    Fidelidade
-}

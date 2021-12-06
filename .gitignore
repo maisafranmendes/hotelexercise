@@ -1,6 +1,9 @@
-*.DS_Store
+.DS_Store
 .vscode/
 
 # Build results
 bin/
 obj/
+
+
+bin/Debug/net6.0/
