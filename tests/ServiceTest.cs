@@ -6,6 +6,7 @@ namespace hotelexercise.tests.ServiceTest
 {
     public class ServiceTest
     {
+
         [Fact]
         public void shouldReturnABookingWhenTheUserSentValidParamenters() {
             //given

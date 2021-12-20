@@ -1,7 +1,11 @@
+
+
 namespace hotelexercise.model
 {
-    public enum Client{
-        Regular,
-        Fidelidade
+    public static class Client {
+
+        public const string Regular = "Regular";
+        public const string Fidelidade = "Fidelidade";
+
     }
 }
