@@ -1,12 +1,23 @@
 namespace hotelexercise.model
 {
-    public class Hotel{
+    public class Hotel
+    {
         private string? nome;
         private int classificacao;
         private double valorDiaDeSemanaRegular;
         private double valorFimDeSemanaRegular;
         private double valorDiaDeSemanaFidelidade;
         private double valorFimDeSemanaFidelidade;
+
+        public Hotel(string nome, int classificacao, double valorDiaDeSemanaRegular, 
+                double valorFimDeSemanaRegular, double valorDiaDeSemanaFidelidade, double valorFimDeSemanaFidelidade ){
+            this.nome = nome;
+            this.classificacao = classificacao;
+            this.valorDiaDeSemanaRegular = valorDiaDeSemanaRegular;
+            this.valorFimDeSemanaRegular = valorFimDeSemanaRegular;
+            this.valorDiaDeSemanaFidelidade = valorDiaDeSemanaFidelidade;
+            this.valorFimDeSemanaFidelidade = valorFimDeSemanaFidelidade;
+        }
 
         public string Nome { get => nome; set => nome = value; }
         public int Classificacao { get => classificacao; set => classificacao = value; }
