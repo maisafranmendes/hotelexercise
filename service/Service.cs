@@ -21,9 +21,9 @@ namespace hotelexercise.service
         
         public int returnMonthRef(string date){
             string month = date.Substring(2,3);
-            for(int i = ((int)Months.Jan); i < ((int)Months.Dec); i++){
-                if(month == Enum.GetName(typeof(Months), i)){
-                    return i;
+            for(int numberOfMonth = ((int)Months.Jan); numberOfMonth < ((int)Months.Dec); numberOfMonth++){
+                if(month == Enum.GetName(typeof(Months), numberOfMonth)){
+                    return numberOfMonth;
                 }
             }
             return 0;
@@ -35,7 +35,7 @@ namespace hotelexercise.service
             for(int i = 0; i < separetedDatesInput.Length; i++){
                 separetedDatesInput[i] = separetedDatesInput[i].Trim();
                 dates.Add(new DateTime(Convert.ToInt16(separetedDatesInput[i].Substring(5,4)),
-                                        returnMonthRef(separetedDatesInput[i]),//fazer classe utils p formataçao
+                                        returnMonthRef(separetedDatesInput[i]),//fazer classe utils p formataçao com classe de testes
                                         Convert.ToInt16(separetedDatesInput[i].Substring(0,2))));
             }
             return dates;
@@ -53,21 +53,21 @@ namespace hotelexercise.service
 
         public double calculateBookingHotel(Booking booking, Hotel hotel){
             double valueBookingWeekendDays = returnValueBookingWeekendDays(booking.Dates, booking.TypeClient == Client.Fidelidade ? 
-                                                                                    hotel.ValorFimDeSemanaFidelidade : hotel.ValorFimDeSemanaRegular);
+                                                                                    hotel.ValueWeekendDaysReward : hotel.ValueWeekendDaysRegular);
             double valueBookingWeekDays = returnValueBookingWeekDays(booking.Dates, booking.TypeClient == Client.Fidelidade ? 
-                                                                                    hotel.ValorDiaDeSemanaFidelidade : hotel.ValorDiaDeSemanaRegular);
+                                                                                    hotel.ValueWeekDaysReward : hotel.ValueWeekDaysRegular);
 
             return valueBookingWeekendDays + valueBookingWeekDays;
         }
 
         public List<Hotel> loadingHotel(){
             List<Hotel> hoteis = new List<Hotel>();
-            hoteis.Add(new Hotel(nome: "Parque das flores", classificacao: 3, valorDiaDeSemanaRegular: 110,
-                                valorFimDeSemanaRegular: 90, valorDiaDeSemanaFidelidade: 80, valorFimDeSemanaFidelidade: 80));
-            hoteis.Add(new Hotel(nome: "Jardim Botânico", classificacao: 4, valorDiaDeSemanaRegular: 160,
-                                valorFimDeSemanaRegular: 60, valorDiaDeSemanaFidelidade: 110, valorFimDeSemanaFidelidade: 50));
-            hoteis.Add(new Hotel(nome: "Mar Atlântico", classificacao: 5, valorDiaDeSemanaRegular: 220,
-                                valorFimDeSemanaRegular: 150, valorDiaDeSemanaFidelidade: 100, valorFimDeSemanaFidelidade: 40));
+            hoteis.Add(new Hotel(name: "Parque das flores", rating: 3, valueWeekDaysRegular: 110,
+                                valueWeekendDaysRegular: 90, valueWeekDaysReward: 80, valueWeekendDaysReward: 80));
+            hoteis.Add(new Hotel(name: "Jardim Botânico", rating: 4, valueWeekDaysRegular: 160,
+                                valueWeekendDaysRegular: 60, valueWeekDaysReward: 110, valueWeekendDaysReward: 50));
+            hoteis.Add(new Hotel(name: "Mar Atlântico", rating: 5, valueWeekDaysRegular: 220,
+                                valueWeekendDaysRegular: 150, valueWeekDaysReward: 100, valueWeekendDaysReward: 40));
 
             return hoteis;
         }
@@ -90,6 +90,22 @@ namespace hotelexercise.service
                 }
             }
             return countWeekDays * priceBookingHotel;
+        }
+
+        public string returnBestHotelBooking(Booking booking){
+            List<Hotel> hoteis = loadingHotel();
+            Hotel bestBookingHotel = hoteis[0];
+            double bestBookingValue = double.MaxValue;
+            foreach(Hotel hotel in hoteis){
+                double calculateBookingValue = calculateBookingHotel(booking, hotel);
+                if(calculateBookingValue < bestBookingValue){
+                    bestBookingHotel = hotel;
+                    bestBookingValue = calculateBookingValue;
+                }else if(calculateBookingValue == bestBookingValue){
+                    bestBookingHotel = hotel.Rating > bestBookingHotel.Rating ? hotel : bestBookingHotel;
+                }
+            }
+            return bestBookingHotel.Name;
         }
     }
 }

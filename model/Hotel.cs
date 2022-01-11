@@ -2,30 +2,29 @@ namespace hotelexercise.model
 {
     public class Hotel
     {
-        private string? nome;
-        private int classificacao;
-        private double valorDiaDeSemanaRegular;
-        private double valorFimDeSemanaRegular;
-        private double valorDiaDeSemanaFidelidade;
-        private double valorFimDeSemanaFidelidade;
+        private string? name;
+        private int rating;
+        private double valueWeekDaysRegular;
+        private double valueWeekendDaysRegular;
+        private double valueWeekDaysReward;
+        private double valueWeekendDaysReward;
 
-        public Hotel(string nome, int classificacao, double valorDiaDeSemanaRegular, 
-                double valorFimDeSemanaRegular, double valorDiaDeSemanaFidelidade, double valorFimDeSemanaFidelidade ){
-            this.nome = nome;
-            this.classificacao = classificacao;
-            this.valorDiaDeSemanaRegular = valorDiaDeSemanaRegular;
-            this.valorFimDeSemanaRegular = valorFimDeSemanaRegular;
-            this.valorDiaDeSemanaFidelidade = valorDiaDeSemanaFidelidade;
-            this.valorFimDeSemanaFidelidade = valorFimDeSemanaFidelidade;
+        public Hotel(string name, int rating, double valueWeekDaysRegular, 
+                double valueWeekendDaysRegular, double valueWeekDaysReward, double valueWeekendDaysReward ){
+            this.name = name;
+            this.rating = rating;
+            this.valueWeekDaysRegular = valueWeekDaysRegular;
+            this.valueWeekendDaysRegular = valueWeekendDaysRegular;
+            this.valueWeekDaysReward = valueWeekDaysReward;
+            this.valueWeekendDaysReward = valueWeekendDaysReward;
         }
 
-        public string Nome { get => nome; set => nome = value; }
-        public int Classificacao { get => classificacao; set => classificacao = value; }
-        public double ValorDiaDeSemanaRegular { get => valorDiaDeSemanaRegular; set => valorDiaDeSemanaRegular = value; }
-        public double ValorFimDeSemanaRegular { get => valorFimDeSemanaRegular; set => valorFimDeSemanaRegular = value; }
-        public double ValorFimDeSemanaFidelidade { get => valorFimDeSemanaFidelidade; set => valorFimDeSemanaFidelidade = value; }
-        public double ValorDiaDeSemanaFidelidade { get => valorDiaDeSemanaFidelidade; set => valorDiaDeSemanaFidelidade = value; }
+        public string Name { get => name; set => name = value; }
+        public int Rating { get => rating; set => rating = value; }
+        public double ValueWeekDaysRegular { get => valueWeekDaysRegular; set => valueWeekDaysRegular = value; }
+        public double ValueWeekendDaysRegular { get => valueWeekendDaysRegular; set => valueWeekendDaysRegular = value; }
+        public double ValueWeekendDaysReward { get => valueWeekendDaysReward; set => valueWeekendDaysReward = value; }
+        public double ValueWeekDaysReward { get => valueWeekDaysReward; set => valueWeekDaysReward = value; }
 
-        //public bool DiaDisponivel(DateTime dia);
     }
 }

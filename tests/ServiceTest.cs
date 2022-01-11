@@ -10,7 +10,7 @@ namespace hotelexercise.tests.ServiceTest
         Service service;
         string inputWeekDays;
         string inputWithWeekendDays;
-        string inputFidelidade;
+        string inputReward;
         Hotel hotel;
 
         public ServiceTest(){
@@ -18,9 +18,9 @@ namespace hotelexercise.tests.ServiceTest
             this.service = new Service();
             this.inputWeekDays = "Regular: 16Mar2020(mon), 17Mar2020(tues), 18Mar2020(wed)";
             this.inputWithWeekendDays = "Regular: 20Mar2020(fri), 21Mar2020(sat), 22Mar2020(sun)";
-            this.inputFidelidade = "Fidelidade: 25Mar2020(thur), 27Mar2020(fri), 28Mar2020(sat)";
-            this.hotel = new Hotel(nome: "Parque das flores", classificacao: 3, valorDiaDeSemanaRegular: 110,
-                                valorFimDeSemanaRegular: 90, valorDiaDeSemanaFidelidade: 80, valorFimDeSemanaFidelidade: 80);
+            this.inputReward = "Reward: 26Mar2020(thur), 27Mar2020(fri), 28Mar2020(sat)";
+            this.hotel = new Hotel(name: "Parque das flores", rating: 3, valueWeekDaysRegular: 110,
+                                valueWeekendDaysRegular: 90, valueWeekDaysReward: 80, valueWeekendDaysReward: 80);
         }
 
         [Fact]
@@ -56,16 +56,43 @@ namespace hotelexercise.tests.ServiceTest
         }
 
         [Fact]
-        public void shouldReturnBookingValueHotelFidelidade() {
+        public void shouldReturnBookingValueHotelReward() {
             //when 
-            Booking booking = service.getBookingByUserInput(inputFidelidade);
+            Booking booking = service.getBookingByUserInput(inputReward);
             double bookingValue = service.calculateBookingHotel(booking, hotel);
 
             //then 
             Assert.Equal(bookingValue, 240);
         }
 
-        //retornar mais barato
-        //se der empate considerar o q possui maior classificação
+        [Fact]
+        public void shouldReturnNameBestHotelBookingWhenWeekDays() {
+            //when 
+            Booking booking = service.getBookingByUserInput(inputWeekDays);
+            string nameBestHotelBooking = service.returnBestHotelBooking(booking);
+
+            //then 
+            Assert.Equal(nameBestHotelBooking, "Parque das flores");
+        }
+
+        [Fact]
+        public void shouldReturnNameBestHotelBookingWhenWeekendDays() {
+            //when 
+            Booking booking = service.getBookingByUserInput(inputWithWeekendDays);
+            string nameBestHotelBooking = service.returnBestHotelBooking(booking);
+
+            //then 
+            Assert.Equal(nameBestHotelBooking, "Jardim Botânico");
+        }
+
+        [Fact]
+        public void shouldReturnNameBestHotelBookingWhenClientRewardAndTiebreakerRating() {
+            //when 
+            Booking booking = service.getBookingByUserInput(inputReward);
+            string nameBestHotelBooking = service.returnBestHotelBooking(booking);
+
+            //then 
+            Assert.Equal(nameBestHotelBooking, "Mar Atlântico");
+        }
     }
 }
