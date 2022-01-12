@@ -1,13 +1,14 @@
 using Xunit;
 using hotelexercise.model;
 using hotelexercise.service;
+using hotelexercise.utils;
 using System;
 
-namespace hotelexercise.tests.ServiceTest
-{
-    public class ServiceTest
+namespace hotelexercise.Tests{
+ public class ServiceTest
     {
         Service service;
+        FormatInput formatInput;
         string inputWeekDays;
         string inputWithWeekendDays;
         string inputReward;
@@ -16,6 +17,7 @@ namespace hotelexercise.tests.ServiceTest
         public ServiceTest(){
             //given
             this.service = new Service();
+            this.formatInput = new FormatInput();
             this.inputWeekDays = "Regular: 16Mar2020(mon), 17Mar2020(tues), 18Mar2020(wed)";
             this.inputWithWeekendDays = "Regular: 20Mar2020(fri), 21Mar2020(sat), 22Mar2020(sun)";
             this.inputReward = "Reward: 26Mar2020(thur), 27Mar2020(fri), 28Mar2020(sat)";
@@ -23,22 +25,10 @@ namespace hotelexercise.tests.ServiceTest
                                 valueWeekendDaysRegular: 90, valueWeekDaysReward: 80, valueWeekendDaysReward: 80);
         }
 
-        [Fact]
-        public void shouldReturnABookingWhenTheUserSentValidParamenters() {
-            //when 
-            Booking booking = service.getBookingByUserInput(inputWeekDays);
-
-            //then 
-            Assert.True(booking is Booking);
-            Assert.Equal(booking.TypeClient, "Regular");
-            Assert.Equal(booking.Dates, new List<DateTime>{new DateTime(2020,03,16), new DateTime(2020,03,17), new DateTime(2020,03,18)});
-        }
-
-
        [Fact]
         public void shouldReturnBookingValueHotelToWeekDays() {
             //when 
-            Booking booking = service.getBookingByUserInput(inputWeekDays);
+            Booking booking = formatInput.getBookingByUserInput(inputWeekDays);
             double bookingValue = service.calculateBookingHotel(booking, hotel);
 
             //then 
@@ -48,7 +38,7 @@ namespace hotelexercise.tests.ServiceTest
         [Fact]
         public void shouldReturnBookingValueHotelToWeekendDays() {
             //when 
-            Booking booking = service.getBookingByUserInput(inputWithWeekendDays);
+            Booking booking = formatInput.getBookingByUserInput(inputWithWeekendDays);
             double bookingValue = service.calculateBookingHotel(booking, hotel);
 
             //then 
@@ -58,7 +48,7 @@ namespace hotelexercise.tests.ServiceTest
         [Fact]
         public void shouldReturnBookingValueHotelReward() {
             //when 
-            Booking booking = service.getBookingByUserInput(inputReward);
+            Booking booking = formatInput.getBookingByUserInput(inputReward);
             double bookingValue = service.calculateBookingHotel(booking, hotel);
 
             //then 
@@ -68,7 +58,7 @@ namespace hotelexercise.tests.ServiceTest
         [Fact]
         public void shouldReturnNameBestHotelBookingWhenWeekDays() {
             //when 
-            Booking booking = service.getBookingByUserInput(inputWeekDays);
+            Booking booking = formatInput.getBookingByUserInput(inputWeekDays);
             string nameBestHotelBooking = service.returnBestHotelBooking(booking);
 
             //then 
@@ -78,7 +68,7 @@ namespace hotelexercise.tests.ServiceTest
         [Fact]
         public void shouldReturnNameBestHotelBookingWhenWeekendDays() {
             //when 
-            Booking booking = service.getBookingByUserInput(inputWithWeekendDays);
+            Booking booking = formatInput.getBookingByUserInput(inputWithWeekendDays);
             string nameBestHotelBooking = service.returnBestHotelBooking(booking);
 
             //then 
@@ -88,11 +78,12 @@ namespace hotelexercise.tests.ServiceTest
         [Fact]
         public void shouldReturnNameBestHotelBookingWhenClientRewardAndTiebreakerRating() {
             //when 
-            Booking booking = service.getBookingByUserInput(inputReward);
+            Booking booking = formatInput.getBookingByUserInput(inputReward);
             string nameBestHotelBooking = service.returnBestHotelBooking(booking);
 
             //then 
             Assert.Equal(nameBestHotelBooking, "Mar Atlântico");
         }
     }
+
 }
