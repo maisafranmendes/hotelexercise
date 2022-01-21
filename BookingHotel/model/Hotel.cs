@@ -1,4 +1,4 @@
-namespace hotelexercise.model
+namespace BookingHotel.model
 {
     public class Hotel
     {
@@ -9,8 +9,9 @@ namespace hotelexercise.model
         private double valueWeekDaysReward;
         private double valueWeekendDaysReward;
 
-        public Hotel(string name, int rating, double valueWeekDaysRegular, 
-                double valueWeekendDaysRegular, double valueWeekDaysReward, double valueWeekendDaysReward ){
+        public Hotel(string name, int rating, double valueWeekDaysRegular,
+                double valueWeekendDaysRegular, double valueWeekDaysReward, double valueWeekendDaysReward)
+        {
             this.name = name;
             this.rating = rating;
             this.valueWeekDaysRegular = valueWeekDaysRegular;

@@ -1,11 +1,12 @@
 using Xunit;
-using hotelexercise.model;
-using hotelexercise.service;
-using hotelexercise.utils;
+using BookingHotel.model;
+using BookingHotel.service;
+using BookingHotel.utils;
 using System;
 
-namespace hotelexercise.Tests{
- public class ServiceTest
+namespace BookingHotel.Tests
+{
+    public class ServiceTest
     {
         Service service;
         FormatInput formatInput;
@@ -14,7 +15,8 @@ namespace hotelexercise.Tests{
         string inputReward;
         Hotel hotel;
 
-        public ServiceTest(){
+        public ServiceTest()
+        {
             //given
             this.service = new Service();
             this.formatInput = new FormatInput();
@@ -25,8 +27,9 @@ namespace hotelexercise.Tests{
                                 valueWeekendDaysRegular: 90, valueWeekDaysReward: 80, valueWeekendDaysReward: 80);
         }
 
-       [Fact]
-        public void shouldReturnBookingValueHotelToWeekDays() {
+        [Fact]
+        public void shouldReturnBookingValueHotelToWeekDays()
+        {
             //when 
             Booking booking = formatInput.getBookingByUserInput(inputWeekDays);
             double bookingValue = service.calculateBookingHotel(booking, hotel);
@@ -36,7 +39,8 @@ namespace hotelexercise.Tests{
         }
 
         [Fact]
-        public void shouldReturnBookingValueHotelToWeekendDays() {
+        public void shouldReturnBookingValueHotelToWeekendDays()
+        {
             //when 
             Booking booking = formatInput.getBookingByUserInput(inputWithWeekendDays);
             double bookingValue = service.calculateBookingHotel(booking, hotel);
@@ -46,7 +50,8 @@ namespace hotelexercise.Tests{
         }
 
         [Fact]
-        public void shouldReturnBookingValueHotelReward() {
+        public void shouldReturnBookingValueHotelReward()
+        {
             //when 
             Booking booking = formatInput.getBookingByUserInput(inputReward);
             double bookingValue = service.calculateBookingHotel(booking, hotel);
@@ -56,7 +61,8 @@ namespace hotelexercise.Tests{
         }
 
         [Fact]
-        public void shouldReturnNameBestHotelBookingWhenWeekDays() {
+        public void shouldReturnNameBestHotelBookingWhenWeekDays()
+        {
             //when 
             Booking booking = formatInput.getBookingByUserInput(inputWeekDays);
             string nameBestHotelBooking = service.returnBestHotelBooking(booking);
@@ -66,7 +72,8 @@ namespace hotelexercise.Tests{
         }
 
         [Fact]
-        public void shouldReturnNameBestHotelBookingWhenWeekendDays() {
+        public void shouldReturnNameBestHotelBookingWhenWeekendDays()
+        {
             //when 
             Booking booking = formatInput.getBookingByUserInput(inputWithWeekendDays);
             string nameBestHotelBooking = service.returnBestHotelBooking(booking);
@@ -76,7 +83,8 @@ namespace hotelexercise.Tests{
         }
 
         [Fact]
-        public void shouldReturnNameBestHotelBookingWhenClientRewardAndTiebreakerRating() {
+        public void shouldReturnNameBestHotelBookingWhenClientRewardAndTiebreakerRating()
+        {
             //when 
             Booking booking = formatInput.getBookingByUserInput(inputReward);
             string nameBestHotelBooking = service.returnBestHotelBooking(booking);

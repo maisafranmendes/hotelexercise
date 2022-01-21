@@ -1,8 +1,9 @@
 
 
-namespace hotelexercise.model
+namespace BookingHotel.model
 {
-    public static class Client {
+    public static class Client
+    {
 
         public const string Regular = "Regular";
         public const string Fidelidade = "Reward";

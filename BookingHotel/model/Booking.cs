@@ -1,6 +1,6 @@
-using hotelexercise.model;
+using BookingHotel.model;
 
-namespace hotelexercise.model
+namespace BookingHotel.model
 {
     public class Booking
     {

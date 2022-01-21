@@ -1,8 +1,9 @@
-using hotelexercise.model;
+using BookingHotel.model;
 
-namespace hotelexercise.utils
+namespace BookingHotel.utils
 {
-    public enum Months{
+    public enum Months
+    {
         Jan = 1,
         Feb = 2,
         Mar = 3,
@@ -18,29 +19,35 @@ namespace hotelexercise.utils
     }
     public class FormatInput
     {
-        public int returnMonthRef(string date){
-            string month = date.Substring(2,3);
-            for(int numberOfMonth = ((int)Months.Jan); numberOfMonth < ((int)Months.Dec); numberOfMonth++){
-                if(month == Enum.GetName(typeof(Months), numberOfMonth)){
+        public int returnMonthRef(string date)
+        {
+            string month = date.Substring(2, 3);
+            for (int numberOfMonth = ((int)Months.Jan); numberOfMonth < ((int)Months.Dec); numberOfMonth++)
+            {
+                if (month == Enum.GetName(typeof(Months), numberOfMonth))
+                {
                     return numberOfMonth;
                 }
             }
             return 0;
         }
 
-        public List<DateTime> getDatesByUserInput(string datesInput){
+        public List<DateTime> getDatesByUserInput(string datesInput)
+        {
             List<DateTime> dates = new List<DateTime>();
             string[] separetedDatesInput = datesInput.Split(',');
-            for(int i = 0; i < separetedDatesInput.Length; i++){
+            for (int i = 0; i < separetedDatesInput.Length; i++)
+            {
                 separetedDatesInput[i] = separetedDatesInput[i].Trim();
-                dates.Add(new DateTime(Convert.ToInt16(separetedDatesInput[i].Substring(5,4)),
+                dates.Add(new DateTime(Convert.ToInt16(separetedDatesInput[i].Substring(5, 4)),
                                         returnMonthRef(separetedDatesInput[i]),
-                                        Convert.ToInt16(separetedDatesInput[i].Substring(0,2))));
+                                        Convert.ToInt16(separetedDatesInput[i].Substring(0, 2))));
             }
             return dates;
         }
 
-        public Booking getBookingByUserInput(string input){
+        public Booking getBookingByUserInput(string input)
+        {
             Booking booking = new Booking();
             string[] separetedInput = input.Split(':');
             string typeClientInput = separetedInput[0];
